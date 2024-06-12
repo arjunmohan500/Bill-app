@@ -17,6 +17,18 @@ let bill=new billmodel(input)
 
 })
 
+ 
+app.post('/view', (req,res) => {
+    coursemodel.find().then((data) => {
+        res.json(data)
+    }
+
+    ).catch(
+        (error) => {
+            res.json(error)
+        }
+    )
+})
 
 app.listen(8080,()=>{
 console.log("server started")
