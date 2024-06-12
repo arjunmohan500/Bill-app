@@ -19,7 +19,7 @@ let bill=new billmodel(input)
 
  
 app.post('/view', (req,res) => {
-    coursemodel.find().then((data) => {
+    billmodel.find().then((data) => {
         res.json(data)
     }
 
@@ -28,6 +28,18 @@ app.post('/view', (req,res) => {
             res.json(error)
         }
     )
+})
+
+app.post('/search',(req,res)=>{
+    let input=req.body
+billmodel.find(input).then((data)=>{
+res.json(data)
+}
+).catch(
+    (error)=>{
+res.json(error)
+    }
+)
 })
 
 app.listen(8080,()=>{
